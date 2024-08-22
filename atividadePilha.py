@@ -1,40 +1,76 @@
 class Pilha:
-	def __init__(self):
-		self.item = []
+    def __init__(self, max_size):
+        self.items = []
+        self.max_size = max_size
 
-	def push(self, item):
-		num1 = (input("Qual numero deseja adicionar ao topo da lista: "))
-		self.item.append(item)
-		print(f" {[item]} ")
+    def push(self, item):
+        if len(self.items) >= self.max_size:
+            print("Não é possível adicionar mais elementos.")
+        else:
+            self.items.append(item)
+            print(f"O elemento '{item}' foi adicionado")
 
-	def pop(self):
-		return self.item.pop()
+    def pop(self):
+        if len(self.items) == 0:
+            print("Não tem elementos para serem removidos!")
+        else:
+            item = self.items.pop()
+            print(f"O elemento '{item}' foi removido da pilha.")
+#item = self.items.pop 
+    def peek(self):
+        if len(self.items) == 0:
+            print("A pilha está vazia!.")
+        else:
+            item = self.items[-1]
+            print(f"O elemento no topo da pilha é: '{item}'.")
 
-	def peek(self):
-		return self.item[-1] if self.item else None
+    def is_empty(self):
+        if len(self.items) == 0:
+            print("A pilha está vazia.")
+        else:
+            print("A pilha não está vazia.")
 
-	def is_empty(self):
-		return len(self.item) == 0
-
+    def display(self):
+        if len(self.items) == 0:
+            print("A pilha está vazia.")
+        else:
+            print("Estado atual da pilha:", self.items)
 
 
 def main():
-	inv = Pilha()
-	
-	print("\n ---- Menu ----")
-	print("1. Adicionar um elemento ao topo da pilha (push) ")
-	print("2. remove e retorna o elemento do topo da pilha (pop) ")
-	print("3. Retorna o elemento do topo da pilha sem remove-lo (peek) ")
-	print("4. Retorna true se a pilha estiver vazia, false se caso contrario (is_empty) ")
-	
-	rep = int(input(""))
-	
-	if rep == 1:
-		inv.push(inv)
-		
-		
+    tamanho = int(input("Digite o tamanho máximo da pilha: "))
+    pilha = Pilha(tamanho)
+
+    while True:
+        print("\nMenu de Operações:")
+        print("1. Push (Adicionar elemento)")
+        print("2. Pop (Remover elemento)")
+        print("3. Peek (Ver topo da pilha)")
+        print("4. Verificar se a pilha está vazia")
+        print("5. Exibir pilha")
+        print("6. Sair")
+
+        resposta = input("Escolh uma opção: ")
+
+        if resposta == '1':
+            elemento = input("Digite o elemento que deseja adicionar: ")
+            pilha.push(elemento)
+        elif resposta == '2':
+            pilha.pop()
+        elif resposta == '3':
+            pilha.peek()
+        elif resposta == '4':
+            pilha.is_empty()
+        elif rrsposta == '5':
+            pilha.display()
+        elif resposta == '6':
+            print("Encerrando o programa.")
+            break
+        else:
+            print("Opção inválida! ")
+
 if __name__ == "__main__":
-	main()
+    main()
 
 		
 
